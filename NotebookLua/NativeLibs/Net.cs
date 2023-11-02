@@ -1,4 +1,4 @@
-namespace LuaNotebookScripting.NativeLibs;
+namespace NotebookLua.NativeLibs;
 
 using System;
 using System.Net.Http;
@@ -80,7 +80,10 @@ public static class Net
             {
                 // If successful, read and return the response content
                 var responseContent = response.Content.ReadAsStringAsync().Result;
-                dynamic responseObject = JsonSerializer.Deserialize<dynamic>(responseContent);
+                dynamic? responseObject = JsonSerializer.Deserialize<dynamic>(responseContent);
+                if (responseObject is null) {
+                    return "Error: couldn't deserialize response";
+                }
                 return responseObject.GetProperty("choices")[0].GetProperty("message").GetProperty("content").ToString();
             }
             else

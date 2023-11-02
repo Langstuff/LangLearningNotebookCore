@@ -1,4 +1,4 @@
-namespace LuaNotebookScripting;
+namespace NotebookLua;
 
 public class Config
 {

@@ -1,29 +1,39 @@
-namespace LuaNotebookScripting;
+namespace NotebookLua;
 
 using System.ComponentModel.DataAnnotations;
 using NLua;
 using System.Reflection;
 using System.Linq;
-using NotebookDB;
+using NotebookDatabase;
 
 public class LuaNotebook
 {
     public uint messagesNumber;
-    private string execResult;
+    private string execResult = "";
     private LuaFunction tostring;
     private string name;
     public Lua lua = LuaStateMaker.MakeLuaState();
     NotebookContext context = new NotebookContext();
-    Notebook notebookDb;
+    Notebook notebookDbEntry;
 
     public LuaNotebook(string name)
     {
-        notebookDb = context.Notebooks
-            .Where(n => n.NotebookName == name).First();
+        var notebooksSearch = context.Notebooks
+            .Where(n => n.NotebookName == name).ToList();
+        if (notebooksSearch.Count > 0)
+        {
+            notebookDbEntry = notebooksSearch.First();
+        }
+        else
+        {
+            notebookDbEntry = new Notebook { NotebookName = name };
+            context.Notebooks.Add(notebookDbEntry);
+            context.SaveChanges();
+        }
 
         this.name = name;
         tostring = lua.GetFunction("tostring");
-        lua.RegisterFunction("print123", this, GetType().GetMethod("LuaPrint"));
+        lua["print"] = (object)LuaPrint;
     }
 
     protected void LuaPrint(params object[] args)
@@ -72,7 +82,7 @@ public class LuaNotebook
         var message = new Message
         {
             UserInput = input,
-            NotebookId = notebookDb.NotebookId,
+            NotebookId = notebookDbEntry.NotebookId,
             ExecutionResult = execResult,
         };
         context.Messages.Add(message);

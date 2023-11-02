@@ -8,8 +8,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\LuaNotebookScripting\LuaNotebookScripting.csproj" />
-      <ProjectReference Include="..\DB\NotebookDB.csproj" />
+      <ProjectReference Include="..\NotebookLua\NotebookLua.csproj" />
+      <ProjectReference Include="..\NotebookDatabase\NotebookDatabase.csproj" />
     </ItemGroup>
 
 </Project>
