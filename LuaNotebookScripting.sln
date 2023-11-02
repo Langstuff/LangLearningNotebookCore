@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-#
+# 
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuaNotebookScripting", "LuaNotebookScripting\LuaNotebookScripting.csproj", "{34000A31-6479-4293-87D4-80D5B39B4364}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cli", "Cli\Cli.csproj", "{C042F30D-7DD6-4C7C-AE56-A17C64F21E06}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotebookDB", "DB\NotebookDB.csproj", "{8224EEE9-CEAD-4B56-9713-E0ED425292B3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,5 +23,12 @@ Global
 		{C042F30D-7DD6-4C7C-AE56-A17C64F21E06}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C042F30D-7DD6-4C7C-AE56-A17C64F21E06}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C042F30D-7DD6-4C7C-AE56-A17C64F21E06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8224EEE9-CEAD-4B56-9713-E0ED425292B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8224EEE9-CEAD-4B56-9713-E0ED425292B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8224EEE9-CEAD-4B56-9713-E0ED425292B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8224EEE9-CEAD-4B56-9713-E0ED425292B3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal

@@ -14,4 +14,8 @@
         <EmbeddedResource Include="LuaLibs\dkjson.lua" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\DB\NotebookDB.csproj" />
+    </ItemGroup>
+
 </Project>

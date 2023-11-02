@@ -9,6 +9,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\LuaNotebookScripting\LuaNotebookScripting.csproj" />
+      <ProjectReference Include="..\DB\NotebookDB.csproj" />
     </ItemGroup>
 
 </Project>
