@@ -79,11 +79,20 @@ public class LuaNotebook
         {
             execResult = input;
         }
+        else if (languageMode == "ai")
+        {
+            execResult = NativeLibs.Net.AI(input);
+        }
+        else
+        {
+            throw new Exception("Unknown language mode: " + languageMode);
+        }
         var message = new Message
         {
             UserInput = input,
             NotebookId = notebookDbEntry.NotebookId,
             ExecutionResult = execResult,
+            LanguageMode = languageMode,
         };
         context.Messages.Add(message);
         context.SaveChanges();

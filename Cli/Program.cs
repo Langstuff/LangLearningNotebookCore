@@ -9,5 +9,7 @@ using (var context = new NotebookContext())
 
 var nb1 = new LuaNotebook("My Notebook");
 
+nb1.Execute("ai", "Hello, world");
+nb1.Execute("lua", "print(AI('Hello, world'))");
 nb1.Execute("lua", "print(123)");
 nb1.Execute("text", "print(123)");
