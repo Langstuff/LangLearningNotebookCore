@@ -1,0 +1,3 @@
+[submodule "NotebookLua/LuaLibs/LuaNotebook"]
+	path = NotebookLua/LuaLibs/LuaNotebook
+	url = git@github.com:Langstuff/LuaNotebook.git
