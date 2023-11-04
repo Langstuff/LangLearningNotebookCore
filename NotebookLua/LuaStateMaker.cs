@@ -28,6 +28,7 @@ public static class LuaStateMaker
         luaState.RegisterFunction("PostRequest", null,
             typeof(NativeLibs.Net).GetMethod("PerformPostRequest"));
         luaState.RegisterFunction("AI", null, typeof(NativeLibs.Net).GetMethod("AI"));
+        luaState.RegisterFunction("save_deck", null, typeof(NativeLibs.Flashcards).GetMethod("SaveDeck"));
         LoadLuaLibrary(ref luaState, "json", "dkjson.lua");
         return luaState;
     }

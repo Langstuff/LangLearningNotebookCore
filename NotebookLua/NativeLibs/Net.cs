@@ -1,6 +1,9 @@
 namespace NotebookLua.NativeLibs;
 
+// Note: this was mostly made with AI tools
+
 using System;
+using System.Dynamic;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
@@ -56,22 +59,30 @@ public static class Net
             }
         }
     }
-    public static string AI(string prompt)
+    public static string AI(string prompt, string? system_message=null)
     {
         using var httpClient = new HttpClient();
         try
         {
+            var messages = new[]
+            {
+                new { role = "user", content = prompt },
+            };
+            if (system_message is not null)
+            {
+                messages = messages.Append(
+                    new { role = "system", content = system_message }
+                ).ToArray();
+            }
             // Prepare the content data
             // var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
             var content = new StringContent(JsonSerializer.Serialize(new
             {
-                messages = new[]
-                {
-                    new { role = "user", content = prompt },
-                },
-                model = "gpt-3.5-turbo",
+                messages = messages,
+                model = "gpt-4",
                 temperature = 0.7,
             }), System.Text.Encoding.UTF8, "application/json");
+            Console.WriteLine("Content: " + JsonSerializer.Serialize(messages));
             httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {Config.openAiApiKey}");
             // Send a POST request to the specified URL with the JSON content
             var response = httpClient.PostAsync("https://api.openai.com/v1/chat/completions", content).Result;
