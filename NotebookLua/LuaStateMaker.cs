@@ -23,6 +23,7 @@ public static class LuaStateMaker
     public static Lua MakeLuaState()
     {
         Lua luaState = new Lua();
+        luaState.State.Encoding = System.Text.Encoding.UTF8;
         luaState.RegisterFunction("GetRequest", null,
             typeof(NativeLibs.Net).GetMethod("PerformGetRequest"));
         luaState.RegisterFunction("PostRequest", null,
