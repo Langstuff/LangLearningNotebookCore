@@ -12,4 +12,8 @@
       <ProjectReference Include="..\NotebookDatabase\NotebookDatabase.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Markdig" Version="0.33.0" />
+    </ItemGroup>
+
 </Project>
