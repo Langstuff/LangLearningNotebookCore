@@ -13,6 +13,11 @@ static void setupDatabase() {
     {
         context.Database.Migrate();
     }
+
+    using (var context = new ArticleContext())
+    {
+        context.Database.Migrate();
+    }
 }
 
 setupDatabase();
